@@ -1,10 +1,10 @@
-import React from 'react'
+import { MainPage } from "./containers"
 
 function App({}) {
 
   return (
     <>
-      <h1 className='text-black'>Hi, Developers</h1>
+      <MainPage />
     </>
   )
 }

@@ -3,6 +3,7 @@ module.exports = {
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
+    "plugin:react/recommended",
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     "prettier",
@@ -17,6 +18,7 @@ module.exports = {
     ],
     "@typescript-eslint/no-explicit-any": "warn",
     "no-unused-vars": "off",
+    "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-unused-vars": ["error", {"argsIgnorePattern": "^_"}],
     "no-empty-function": "error",
     "@typescript-eslint/no-empty-function": "error",

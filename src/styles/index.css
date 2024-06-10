@@ -25,3 +25,10 @@
       @apply text-blue-600;
     }
 }
+
+@keyframes spinner {
+  0%  {box-shadow: 20px 0 #fff, -20px 0 #0002;background: #fff }
+  33% {box-shadow: 20px 0 #fff, -20px 0 #0002;background: #0002}
+  66% {box-shadow: 20px 0 #0002,-20px 0 #fff; background: #0002}
+  100%{box-shadow: 20px 0 #0002,-20px 0 #fff; background: #fff }
+}
