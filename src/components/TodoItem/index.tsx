@@ -9,7 +9,7 @@ const TodoItem:FC<TodoItemType> = ({title, remove, edit, editFlag, editCanceling
     <div className="flex items-center justify-between">
         <span className="text-base font-medium text-white">{title}</span>
         <div className="flex items-center gap-1">
-            <Button className="bg-sp-red text-white font-medium" label="Delete" onClick={remove}/>
+            <Button className={`text-white font-medium ${editFlag ? 'border bg-sp-metal border-slate-300' : 'bg-sp-red border-none'}`} disabled={editFlag} label="Delete" onClick={remove}/>
             {editFlag ? (
               <Button className="bg-gray-300 text-sp-metal font-medium" label="Cancel" onClick={editCanceling} />
             ) : (

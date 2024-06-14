@@ -65,10 +65,10 @@ const MainPage:FC = () => {
             <TodoItem 
               key={todo.id} 
               title={todo.title} 
-              edit={()=> editHandler(todo.id)}
+              edit={todo.id !== currentTodo.id && editFlag  ? () => {} : ()=> editHandler(todo.id)}
               editFlag={todo.id === currentTodo.id ? editFlag : false}
               editCanceling={editCancelingHandler}
-              remove={()=> deleteHandler(todo.id)}
+              remove={todo.id !== currentTodo.id && editFlag  ? () => {} : ()=> deleteHandler(todo.id)}
             />
           ) 
         : 
