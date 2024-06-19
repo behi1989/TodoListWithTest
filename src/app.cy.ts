@@ -1,5 +1,17 @@
-describe('navigation', () => {
-  it('visit the main page', () => {
+describe('navigate to home page', () => {
+  it('visit the home page first time', () => {
     cy.visit('/')
+    cy.get('[data-cy="pageTitle"]').should('be.visible')
+    cy.contains(/Mini TodoList App/i)
+    cy.get('[data-cy="addToDoBox"]').should('be.exist')
+    cy.get('[data-cy="addToDoBox"]').contains(/Add New Todo/i)
+    cy.get('[data-cy="formTextInput"]').should('be.exist')
+    cy.get('[data-cy="formTextInput"]').should('have.value', '')
+    cy.get('[data-cy="todoAddButton"]').should('be.exist')
+    cy.get('[data-cy="todoUpdateButton"]').should('not.be.exist')
+    cy.get('[data-cy="todoListBox"]').should('be.exist')
+    cy.get('[data-cy="todoListBox"]').contains(/Todos()/i)
+    cy.get('[data-cy="todoItemComponent"]').should('not.be.exist')
+    cy.get('[data-cy="nothingHereAlert"]').should('be.exist')
   })
 })

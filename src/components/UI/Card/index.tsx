@@ -6,10 +6,11 @@ const Card:FC<CardType> = ({
     label, 
     labelClass='', 
     children, 
-    className=''
+    className='',
+    ...rest
 }) => {
   return (
-    <div className={`bg-dark-gray min-h-[100px] p-2 shadow-md rounded-lg ${className}`}>
+    <div className={`bg-dark-gray min-h-[100px] p-2 shadow-md rounded-lg ${className}`} {...rest}>
         {hasLabel && (
             <div className="flex justify-start items-center pb-2 mb-2 border-b border-darker-gray">
                 <h4 className={`text-white text-base font-bold ${labelClass}`}>{label}</h4>

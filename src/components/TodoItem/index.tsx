@@ -4,9 +4,9 @@ import { Button } from "../UI"
 
 import { TodoItemType } from "./TodoItem.type"
 
-const TodoItem:FC<TodoItemType> = ({title, remove, edit, editFlag, editCanceling}) => {
+const TodoItem:FC<TodoItemType> = ({title, remove, edit, editFlag, editCanceling, ...rest}) => {
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between" {...rest}>
         <span className="text-base font-medium text-white">{title}</span>
         <div className="flex items-center gap-1">
             <Button className={`text-white font-medium ${editFlag ? 'border bg-sp-metal border-slate-300' : 'bg-sp-red border-none'}`} disabled={editFlag} label="Delete" onClick={remove}/>

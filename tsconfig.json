@@ -24,9 +24,9 @@
     "noFallthroughCasesInSwitch": true,
     
     "paths": { "@/*": ["./src/*"] },
-    "types": ["cypress", "node"] // use for cypress files type checking
+    "types": ["cypress"], // use for cypress files type checking
   },
-  "include": ["src"],
+  "include": ["src", "cypress.d.ts"],
   // "exclude": ["**/*.cy.ts", "**/*.cy.tsx"], // use for cypress files type checking
   "references": [{ "path": "./tsconfig.node.json" }]
 }

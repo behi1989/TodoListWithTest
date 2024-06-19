@@ -49,21 +49,23 @@ const MainPage:FC = () => {
 
   return (
     <section className="w-full max-w-[300px] md:max-w-[600px] inset-0 m-auto">
-      <Card className="mt-12" hasLabel label="Add New Todo">
+      <h2 data-cy="pageTitle" className="text-white text-center mt-3">Mini TodoList App</h2>
+      <Card data-cy="addToDoBox" className="mt-8" hasLabel label="Add New Todo">
         <form onSubmit={editFlag ? updateTodoHandler : addTodoHandler} className="flex justify-between items-center gap-2">
-          <TextInput id="todoInput" value={todo} onChange={(text) => setTodo(text?.target?.value)} hasLabel={false} />
+          <TextInput id="todoInput" data-cy="formTextInput" value={todo} onChange={(text) => setTodo(text?.target?.value)} hasLabel={false} />
           {editFlag ? 
-            <Button type="submit" label="Update" className="bg-yellow-500 text-white font-medium" />
+            <Button data-cy="todoUpdateButton" type="submit" label="Update" className="bg-yellow-500 text-white font-medium" />
           : 
-            <Button type="submit" label="Add" className="bg-sp-blue text-white" />
+            <Button data-cy="todoAddButton" type="submit" label="Add" className="bg-sp-blue text-white" />
           }
         </form>
       </Card>
-      <Card className="mt-3" hasLabel label={`Todos(${todos.length})`}>
+      <Card data-cy="todoListBox" className="mt-3" hasLabel label={`Todos(${todos.length})`}>
         {todos.length ? 
           todos?.map(todo => 
             <TodoItem 
               key={todo.id} 
+              data-cy="todoItemComponent"
               title={todo.title} 
               edit={todo.id !== currentTodo.id && editFlag  ? () => {} : ()=> editHandler(todo.id)}
               editFlag={todo.id === currentTodo.id ? editFlag : false}
@@ -72,7 +74,7 @@ const MainPage:FC = () => {
             />
           ) 
         : 
-          <h4 className="text-base text-center font-semibold text-sp-red">Nothing here!</h4>}
+          <h4 data-cy="nothingHereAlert" className="text-base text-center font-semibold text-sp-red">Nothing here!</h4>}
       </Card>
     </section>
   )
