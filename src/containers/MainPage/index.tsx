@@ -56,7 +56,7 @@ const MainPage:FC = () => {
   return (
     <section className="w-full max-w-[300px] md:max-w-[600px] inset-0 m-auto">
       <h2 data-cy="pageTitle" className="text-white text-center mt-3">Mini TodoList App</h2>
-      <Card data-cy="addToDoBox" className="mt-8" hasLabel label="Add New Todo">
+      <Card data-cy="addToDoBox" className="mt-8" hasLabel label={editFlag ? 'Edit Todo' : 'Add Todo'}>
         <>
           <form onSubmit={editFlag ? updateTodoHandler : addTodoHandler} className="flex justify-between items-center gap-2">
             <TextInput id="todoInput" data-cy="formTextInput" value={todo} onChange={(text) => setTodo(text?.target?.value)} hasLabel={false} />
