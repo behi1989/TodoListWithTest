@@ -10,12 +10,18 @@ const MainPage:FC = () => {
   const [todos, setTodos] = useState<TodoType[]>([])
   const [currentTodo, setCurrentTodo] = useState<Partial<TodoType>>({})
   const [editFlag, setEditFlag] = useState<boolean>(false)
+  const [error, setError] = useState<string>('')
 
   const addTodoHandler = (e: FormEvent) => {
     e.preventDefault()
-    const id = Date.now()
-    setTodos([...todos, {id, title: todo}])
-    setTodo("")
+    if(todo) {
+      const id = Date.now()
+      setTodos([...todos, {id, title: todo}])
+      setTodo("")
+      setError("")
+    } else {
+      setError('Please fill the required input!')
+    }
   }
 
   const editHandler = (id: number) => {
@@ -51,14 +57,17 @@ const MainPage:FC = () => {
     <section className="w-full max-w-[300px] md:max-w-[600px] inset-0 m-auto">
       <h2 data-cy="pageTitle" className="text-white text-center mt-3">Mini TodoList App</h2>
       <Card data-cy="addToDoBox" className="mt-8" hasLabel label="Add New Todo">
-        <form onSubmit={editFlag ? updateTodoHandler : addTodoHandler} className="flex justify-between items-center gap-2">
-          <TextInput id="todoInput" data-cy="formTextInput" value={todo} onChange={(text) => setTodo(text?.target?.value)} hasLabel={false} />
-          {editFlag ? 
-            <Button data-cy="todoUpdateButton" type="submit" label="Update" className="bg-yellow-500 text-white font-medium" />
-          : 
-            <Button data-cy="todoAddButton" type="submit" label="Add" className="bg-sp-blue text-white" />
-          }
-        </form>
+        <>
+          <form onSubmit={editFlag ? updateTodoHandler : addTodoHandler} className="flex justify-between items-center gap-2">
+            <TextInput id="todoInput" data-cy="formTextInput" value={todo} onChange={(text) => setTodo(text?.target?.value)} hasLabel={false} />
+            {editFlag ? 
+              <Button data-cy="todoUpdateButton" type="submit" label="Update" className="bg-yellow-500 text-white font-medium" />
+              : 
+              <Button data-cy="todoAddButton" type="submit" label="Add" className="bg-sp-blue text-white" />
+            }
+          </form>
+          {error && <span className="text-sp-red text-sm font-semibold text-left">{error}</span>}
+        </>
       </Card>
       <Card data-cy="todoListBox" className="mt-3" hasLabel label={`Todos(${todos.length})`}>
         {todos.length ? 
