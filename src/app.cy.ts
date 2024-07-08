@@ -4,7 +4,7 @@ describe('navigate to home page', () => {
     cy.get('[data-cy="pageTitle"]').should('be.visible')
     cy.contains(/Mini TodoList App/i)
     cy.get('[data-cy="addToDoBox"]').should('be.exist')
-    cy.get('[data-cy="addToDoBox"]').contains(/Add New Todo/i)
+    cy.get('[data-cy="addToDoBox"]').contains(/Add Todo/i)
     cy.get('[data-cy="formTextInput"]').should('be.exist')
     cy.get('[data-cy="formTextInput"]').should('have.value', '')
     cy.get('[data-cy="todoAddButton"]').should('be.exist')

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ButtonHTMLAttributes, ReactElement } from 'react'
 
 export type ButtonType = {
   label?: string
@@ -11,4 +11,4 @@ export type ButtonType = {
   spinnerColor?: string
   onClick?: () => void
   className?: string
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>
